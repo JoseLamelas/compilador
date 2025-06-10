@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Compilador ISTEC</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #11101D 0%, #2b2758 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animação de fundo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            font-size: 60px;
+            color: #4a90e2;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-title {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .logo-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .login-content {
+            margin-bottom: 30px;
+        }
+
+        .login-title {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .login-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .istec-badge {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .google-login-btn {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .google-login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .google-login-btn:hover::before {
+            left: 100%;
+        }
+
+        .google-login-btn:hover {
+            background: #357ae8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.3);
+        }
+
+        .google-login-btn i {
+            font-size: 20px;
+        }
+
+        .security-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid #4a90e2;
+        }
+
+        .security-info h4 {
+            color: #4a90e2;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .security-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #2ed573, #1dd1a1);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .footer-info {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .logo-title {
+                font-size: 24px;
+            }
+            
+            .google-login-btn {
+                padding: 12px 25px;
+                font-size: 15px;
+            }
+        }
+
+        /* Particles background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatParticle 15s linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles background -->
+    <div class="particles" id="particles"></div>
+
+    <div class="login-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-icon">
+                <i class="bx bxl-c-plus-plus"></i>
+            </div>
+            <h1 class="logo-title">Compilador ISTEC</h1>
+            <p class="logo-subtitle">Para Iniciantes</p>
+        </div>
+
+        <!-- Login Content -->
+        <div class="login-content">
+            <div class="istec-badge">
+                <i class="bx bxs-school"></i>
+                ISTEC Porto
+            </div>
+            
+            <h2 class="login-title">Acesso Restrito</h2>
+            <p class="login-description">
+                Esta plataforma é exclusiva para estudantes e docentes do ISTEC Porto. 
+                Faça login com a sua conta institucional para aceder ao compilador.
+            </p>
+
+            <!-- Error Messages -->
+            <div id="error-message" class="error-message">
+                <i class="bx bx-error"></i>
+                <span id="error-text"></span>
+            </div>
+
+            <!-- Success Messages -->
+            <div id="success-message" class="success-message">
+                <i class="bx bx-check"></i>
+                <span id="success-text"></span>
+            </div>
+
+            <!-- Google Login Button -->
+            <button class="google-login-btn" onclick="loginWithGoogle()">
+                <i class="bx bxl-google"></i>
+                <span>Entrar com Google ISTEC</span>
+            </button>
+
+            <!-- Security Info -->
+            <div class="security-info">
+                <h4>
+                    <i class="bx bx-shield-check"></i>
+                    Segurança & Privacidade
+                </h4>
+                <p>
+                    Apenas contas com domínio <strong>@my.istec.pt</strong> têm acesso. 
+                    Os seus dados são protegidos e não são partilhados com terceiros.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-info">
+        <p>&copy; 2024/2025 ISTEC Porto | José Lamelas | João Rio</p>
+    </div>
+
+    <script>
+        // ===== PARTICLES ANIMATION =====
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 4 + 2;
+                const startPos = Math.random() * 100;
+                const animationDelay = Math.random() * 15;
+                const animationDuration = Math.random() * 10 + 10;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = startPos + '%';
+                particle.style.animationDelay = animationDelay + 's';
+                particle.style.animationDuration = animationDuration + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // ===== LOGIN FUNCTION =====
+        function loginWithGoogle() {
+            // Adicionar loading state
+            const btn = document.querySelector('.google-login-btn');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> <span>A conectar...</span>';
+            btn.disabled = true;
+
+            // Redirecionar para autenticação Google
+            setTimeout(() => {
+                window.location.href = '/auth/google';
+            }, 500);
+        }
+
+        // ===== URL PARAMETERS HANDLING =====
+        function handleUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const message = urlParams.get('message');
+
+            if (error) {
+                let errorText = '';
+                switch (error) {
+                    case 'auth':
+                        errorText = 'Falha na autenticação. Tente novamente.';
+                        break;
+                    case 'domain':
+                        errorText = 'Apenas contas @my.istec.pt são permitidas.';
+                        break;
+                    default:
+                        errorText = 'Erro desconhecido. Contacte o suporte.';
+                }
+                showError(errorText);
+            }
+
+            if (message === 'logout') {
+                showSuccess('Logout realizado com sucesso.');
+            }
+        }
+
+        // ===== SHOW MESSAGES =====
+        function showError(text) {
+            const errorDiv = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            errorText.textContent = text;
+            errorDiv.style.display = 'block';
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(text) {
+            const successDiv = document.getElementById('success-message');
+            const successText = document.getElementById('success-text');
+            successText.textContent = text;
+            successDiv.style.display = 'block';
+            
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // ===== KEYBOARD SUPPORT =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                loginWithGoogle();
+            }
+        });
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            handleUrlParameters();
+            
+            console.log('🔐 Página de login carregada');
+            console.log('📧 Domínio permitido: @my.istec.pt');
+        });
+    </script>
+</body>
+</html>

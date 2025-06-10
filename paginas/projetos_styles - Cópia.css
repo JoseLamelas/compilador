@@ -1,0 +1,596 @@
+/* Reset básico para margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cabeçalho */
+.main-header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.main-header h1 {
+    font-size: 2rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.nav-menu li {
+    margin: 0 1rem;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ffdd57;
+}
+
+/* Conteúdo Principal */
+.content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2b2758;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4a4f70;
+    transition: all 0.3s ease;
+}
+
+.content h2 {
+    color: #4a90e2;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 0.5rem;
+}
+
+.content ul {
+    list-style: disc;
+    margin: 1rem 0 1rem 2rem;
+}
+
+.content pre {
+    background: #e1e5ea;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.content pre code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+}
+
+/* Rodapé */
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    
+}
+
+.main-footer p {
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+    color: #9e9e9e;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclui borda e padding no cálculo */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Modos de cor invertidos */
+body.light-mode {
+    background-color: #11101D;
+    color: #fff;
+}
+
+
+body.light-mode .nav-menu a {
+    color: #e0e0e0;
+}
+
+body.light-mode .content {
+    background-color: #2b2758;
+    color: #a69ab6;
+}
+
+body.light-mode .main-footer {
+    background-color: #222;
+    color: #e0e0e0;
+}
+
+body.light-mode footer {
+    color: #464545;
+}
+
+body.dark-mode {
+    background-color: #ffffff;
+    color: #333;
+}
+
+body.dark-mode .main-header {
+    background-color: #4a90e2;
+}
+
+body.dark-mode .nav-menu a {
+    color: #333;
+}
+
+body.dark-mode .content {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body.dark-mode .main-footer {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body.dark-mode footer {
+    color: #9e9e9e;
+}
+
+/* ===== COMPLEMENTOS PARA TUTORIAL JQUERY ===== */
+/* Adicionar ao final do ficheiro styles.css existente (depois dos estilos jQuery já lá) */
+
+/* Melhorar visualização do #demo-seletores no modo dark */
+body.dark-mode #demo-seletores {
+    background: rgba(255,255,255,0.1) !important;
+    border-color: rgba(255,255,255,0.3) !important;
+}
+
+/* Melhorar inputs no todo-app */
+#todo-app input[type="text"] {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: inherit;
+}
+
+body.dark-mode #todo-app input[type="text"] {
+    background: rgba(0,0,0,0.2);
+    border-color: rgba(0,0,0,0.3);
+}
+
+/* Melhorar #resultado-ajax */
+#resultado-ajax {
+    background: rgba(255,255,255,0.1) !important;
+    border-color: rgba(255,255,255,0.2) !important;
+}
+
+body.dark-mode #resultado-ajax {
+    background: rgba(0,0,0,0.1) !important;
+    border-color: rgba(0,0,0,0.2) !important;
+}
+
+/* Melhorar animações suaves */
+button {
+    transition: all 0.3s ease !important;
+}
+
+/* Melhorar caixa de animação */
+#caixa-animacao {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Melhorar contador demo */
+#contador-demo {
+    background: rgba(74, 144, 226, 0.2) !important;
+    border: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+body.dark-mode #contador-demo {
+    background: rgba(74, 144, 226, 0.3) !important;
+}
+
+/* Melhorar texto digitado */
+#texto-digitado {
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 4px;
+    padding: 8px;
+    min-height: 40px;
+    border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+body.dark-mode #texto-digitado {
+    background: rgba(74, 144, 226, 0.2);
+}
+
+/* ===== ESTILOS PARA PÁGINA DE PROJETOS ===== */
+/* Adicionar ao final do ficheiro styles.css existente */
+
+/* Cards de projeto */
+.projeto-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #4a4f70;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: translateY(-5px);
+    border-color: #4a90e2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Header do projeto */
+.projeto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.projeto-header h3 {
+    color: #4a90e2;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+/* Badges de dificuldade */
+.badge-iniciante, .badge-intermedio, .badge-avancado {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-iniciante { 
+    background: #28a745; 
+    color: white; 
+}
+
+.badge-intermedio { 
+    background: #ffc107; 
+    color: #333; 
+}
+
+.badge-avancado { 
+    background: #dc3545; 
+    color: white; 
+}
+
+/* Skills do projeto */
+.projeto-skills {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 3px solid #4a90e2;
+}
+
+.projeto-skills h4 {
+    color: #4a90e2;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.projeto-skills ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.projeto-skills li {
+    margin-bottom: 5px;
+    font-size: 13px;
+    list-style: none;
+}
+
+/* Ações do projeto */
+.projeto-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #4a90e2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Info box */
+.info-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #4a4f70;
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid #4a90e2;
+}
+
+.info-box h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+}
+
+.info-box ol, .info-box ul {
+    margin-bottom: 20px;
+}
+
+.info-box li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #2b2758;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90%;
+    border: 2px solid #4a4f70;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    background: #11101D;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4a4f70;
+}
+
+.modal-header h3 {
+    color: #4a90e2;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-tabs {
+    display: flex;
+    background: #11101D;
+    border-bottom: 2px solid #4a4f70;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background: #4a90e2;
+    color: white;
+}
+
+.code-display {
+    margin: 0;
+    padding: 20px;
+    background: #1e1e1e;
+    color: #f8f8f2;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 400px;
+    overflow: auto;
+    border: none;
+}
+
+.modal-footer {
+    background: #2b2758;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    border-top: 2px solid #4a4f70;
+}
+
+/* Dark mode para projetos */
+body.dark-mode .projeto-card {
+    background: #f4f4f4;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.dark-mode .projeto-header h3 {
+    color: #4a90e2;
+}
+
+body.dark-mode .projeto-skills {
+    background: rgba(0, 0, 0, 0.05);
+    border-left-color: #4a90e2;
+}
+
+body.dark-mode .projeto-skills h4 {
+    color: #4a90e2;
+}
+
+body.dark-mode .btn-secondary {
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .info-box {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    border-left-color: #4a90e2;
+}
+
+body.dark-mode .info-box h3 {
+    color: #4a90e2;
+}
+
+body.dark-mode .modal-content {
+    background: #f4f4f4;
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .modal-header {
+    background: #ffffff;
+}
+
+body.dark-mode .modal-header h3 {
+    color: #4a90e2;
+}
+
+body.dark-mode .modal-close {
+    color: #333;
+}
+
+body.dark-mode .code-tabs {
+    background: #ffffff;
+}
+
+body.dark-mode .tab-btn {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .tab-btn.active, body.dark-mode .tab-btn:hover {
+    background: #4a90e2;
+    color: white;
+}
+
+body.dark-mode .modal-footer {
+    background: #f4f4f4;
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .projeto-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .projeto-actions {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary {
+        min-width: auto;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-height: 95%;
+    }
+    
+    .code-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        min-width: 80px;
+    }
+    
+    .code-display {
+        height: 300px;
+        font-size: 12px;
+    }
+}
