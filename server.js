@@ -31,7 +31,7 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://compilador-6g5u.onrender.com/login"
+    callbackURL: "https://compilador-6g5u.onrender.com/"
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         // Verificar se o email é do domínio @my.istec.pt
